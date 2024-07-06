@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <style>
@@ -211,7 +212,9 @@
     <div class="container">
         <div class="Traduccion">
             <p name="Traduccion">Traducción en español:</p>
-            <button id="btnHablar">Hablar</button>
+            <button id="btnHablar" class="btnHablar" onclick="toggleRecognition()">
+                <i class="fas fa-microphone"></i> <!-- Icono de micrófono -->
+            </button>
             <textarea class="inputTraduccion" type="text" id="inputTraduccion" name="inputTraduccion"></textarea>
         </div>
         <div class="Letras">
@@ -284,17 +287,21 @@
         
         function CambiarTradiuccion(){
             //Cambiamos la traduccion de texto a lengua de señas.
-            window.location.href = "https://joonniboy.github.io/";
+            window.location.href = "/index2.html";
         }
 
         const btnHablar = document.getElementById('btnHablar');
         const recognition = new webkitSpeechRecognition(); // Usar el prefijo webkit para Chrome
 
-        btnHablar.addEventListener('click', () => {
-            recognition.start();
-            // Agregar una notificación visual
-            btnHablar.innerText = 'Escuchando...';
-        });
+        function toggleRecognition() {
+            if (recognition.running) {
+                recognition.stop();
+                btnHablar.innerHTML = '<i class="fas fa-microphone"></i>'; // Icono de micrófono
+            } else {
+                recognition.start();
+                btnHablar.innerHTML = '<i class="fas fa-volume-up"></i>'; // Icono de bocina
+            }
+        }
 
         recognition.onresult = (event) => {
             const transcript = event.results[0][0].transcript;
@@ -303,7 +310,7 @@
 
         // Restaurar el botón a su estado original cuando se detiene el reconocimiento
         recognition.onend = () => {
-            btnHablar.innerText = 'Hablar';
+            btnHablar.innerHTML = '<i class="fas fa-microphone"></i>'; // Icono de micrófono
         };
     </script>
 </body>
