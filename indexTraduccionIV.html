@@ -118,6 +118,20 @@
             width: 100%;
             height: 100%;
         }
+        .CambiarTraduccion{
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        .CambiarTraduccion img{
+            max-width: 25%;
+            max-height: 60%;
+        }
+        .BtnCambiarTraduccion{
+            background-color: transparent;
+            border-color: transparent;
+        }
         
                 
         /* Media query para pantallas pequeñas */
@@ -175,6 +189,9 @@
                 display: flex; 
                 flex-wrap: wrap;
             }
+            .CambiarTraduccion img{
+                max-width: 20%;
+            }
         }
     </style>
     <div class="navbar">
@@ -200,6 +217,11 @@
             <p name="cadena">Traducción en lengua de señas: </p>
             <div id="imagen"></div> <!-- Aquí se mostrarán las imágenes -->
         </div>
+    </div>
+    <div class="CambiarTraduccion">
+        <button type="button" alt="CambiarTraduccion" class="BtnCambiarTraduccion" onclick="CambiarTradiuccion()">
+            <img src="https://cdn-icons-png.flaticon.com/512/8420/8420603.png" alt="">
+        </button>
     </div>
     <script>
         const letrasImagenes = {
