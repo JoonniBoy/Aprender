@@ -133,6 +133,18 @@
             background-color: transparent;
             border-color: transparent;
         }
+        .btnHablar{
+            background-color: transparent;
+            border-color: transparent;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+        
         
                 
         /* Media query para pantallas pequeñas */
@@ -311,7 +323,27 @@
         // Restaurar el botón a su estado original cuando se detiene el reconocimiento
         recognition.onend = () => {
             btnHablar.innerHTML = '<i class="fas fa-microphone"></i>'; // Icono de micrófono
+            procesarPalabras();
         };
+
+        // Método para procesar las palabras y mostrar las imágenes
+    function procesarPalabras() {
+        const textoTraduccion = quitarAcentos(inputTraduccion.value.toUpperCase());
+        let cadenaCompleta = '';
+        let imagenesHTML = '';
+
+        for (let i = 0; i < textoTraduccion.length; i++) {
+            const letra = textoTraduccion.charAt(i);
+            const idImagen = letrasImagenes[letra];
+
+            if (idImagen) {
+                cadenaCompleta += letra;
+                imagenesHTML += `<img src="${idImagen}" alt="Imagen de ${letra}" style="max-width: 10%; margin: 5px;">`;
+            }
+        }
+
+        imagenContainer.innerHTML = imagenesHTML;
+    }
     </script>
 </body>
 </html>
