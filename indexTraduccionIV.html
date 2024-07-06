@@ -211,6 +211,7 @@
     <div class="container">
         <div class="Traduccion">
             <p name="Traduccion">Traducción en español:</p>
+            <button id="btnHablar">Hablar</button>
             <textarea class="inputTraduccion" type="text" id="inputTraduccion" name="inputTraduccion"></textarea>
         </div>
         <div class="Letras">
@@ -280,10 +281,30 @@
             imagenContainer.innerHTML = imagenesHTML;
         });
 
-         function CambiarTradiuccion(){
+        
+        function CambiarTradiuccion(){
             //Cambiamos la traduccion de texto a lengua de señas.
             window.location.href = "https://joonniboy.github.io/";
         }
+
+        const btnHablar = document.getElementById('btnHablar');
+        const recognition = new webkitSpeechRecognition(); // Usar el prefijo webkit para Chrome
+
+        btnHablar.addEventListener('click', () => {
+            recognition.start();
+            // Agregar una notificación visual
+            btnHablar.innerText = 'Escuchando...';
+        });
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            inputTraduccion.value += transcript + ' '; // Agregar las palabras al área de texto
+        };
+
+        // Restaurar el botón a su estado original cuando se detiene el reconocimiento
+        recognition.onend = () => {
+            btnHablar.innerText = 'Hablar';
+        };
     </script>
 </body>
 </html>
