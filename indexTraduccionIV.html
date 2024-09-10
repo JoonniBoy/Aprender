@@ -21,7 +21,7 @@
 
         }
         h1 { 
-            color: #1A5555; 
+            color: #ffffff; 
             text-align: center;  
             font-size: 2.5em; 
             margin: 0;
@@ -67,7 +67,10 @@
             justify-content: center;
         }
         .navbar {
-            background-color: #03D3BB;
+            background: url("https://i.ibb.co/swWFnyF/13.jpg");
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
             display: flex;
             justify-content: space-between;
             overflow: hidden;
@@ -75,10 +78,8 @@
             width: 97%;
             height: 100px;
             border-radius: 10px; /* Bordes redondeados */
-            display: flex; /* Alinea los elementos horizontalmente */
-            justify-content: space-between; /* Distribuye los elementos a lo largo de la barra */
             padding: 10px; /* Espaciado interno */
-        }  
+        }
         .navbar a {
             display: flex; /* Alinea los elementos horizontalmente */
             justify-content: space-between; /* Distribuye los elementos a lo largo del contenedor */
@@ -160,13 +161,13 @@
                 padding: 10px;
             }
             h1 {
-                color: #1A5555; 
+                color: #ffffff; 
                 text-align: center;  
                 font-size: 1.0em; 
                 margin: 0;
             }
             h1 {
-                color: #1A5555; 
+                color: #ffffff; 
                 text-align: center;  
                 font-size: 1.0em; 
                 margin: 0;
@@ -209,8 +210,8 @@
     </style>
     <div class="navbar">
         <div class="divMenu">
-            <a href="#" >Aprender Más</a>
-            <a href="#" >Ayuda</a>
+            <a href="https://www.edutin.com/lenguaje-de-se%C3%B1as-mexico-4200" target="_blank" class="enlaceX">Aprender Más</a>
+            <a href="https://joonniboy.github.io/SignaTech/" target="_blank" class="enlaceX">Acerca de nosotros</a>
         </div>
         <div>
             <h1>Guante traductor de lenguaje de señas</h1>
@@ -295,11 +296,10 @@
 
             imagenContainer.innerHTML = imagenesHTML;
         });
-
         
         function CambiarTradiuccion(){
             //Cambiamos la traduccion de texto a lengua de señas.
-            window.location.href = "https://joonniboy.github.io/";  
+            window.location.href = "/index2.html";
         }
 
         const btnHablar = document.getElementById('btnHablar');
